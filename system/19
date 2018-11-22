@@ -1,0 +1,19 @@
+ [ + ]  avahi-daemon
+ [ + ]  cron
+ [ + ]  cups
+ [ + ]  cups-browsed
+ [ + ]  dbus
+ [ + ]  hddtemp
+ [ + ]  kmod
+ [ + ]  lightdm
+ [ + ]  lm-sensors
+ [ + ]  minissdpd
+ [ + ]  network-manager
+ [ + ]  procps
+ [ + ]  rsyslog
+ [ + ]  speech-dispatcher
+ [ + ]  ssh
+ [ + ]  udev
+
+# upstart services (service --status-all | grep "+" | awk '{print $4}')
+# un service qui se lance automatiquement est un daemon

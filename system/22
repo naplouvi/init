@@ -1,0 +1,2 @@
+adduser username
+# il y a aussi useradd qui ne demande pas de mot de passe a la creation du user

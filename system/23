@@ -1,0 +1,2 @@
+En graphique, on tape "su - username" puis on entre le mot de passe
+En ssh, on précise l'username à la connection "ssh username@ip_adress"

@@ -1,0 +1,4 @@
+# reponse a :
+ifconfig | grep "broadcast" | awk '{print $6}'
+# reponse b :
+ifconfig -L en0 | grep "inet " | cut -d " " -f 2

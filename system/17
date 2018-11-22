@@ -1,0 +1,2 @@
+ssh username@hostname
+# ou ssh username@target_ip:port

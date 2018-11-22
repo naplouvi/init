@@ -1,0 +1,3 @@
+# ipconfig getpacket en0 | grep "domain_name" | tail -1
+
+le-101.fr

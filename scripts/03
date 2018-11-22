@@ -1,0 +1,76 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+	echo
+	echo "Shell script 03 : Todo list."
+	echo
+	echo "NAME"
+	echo "	./03 -- manage a list of todo things"
+	echo
+	echo "SYNOPSIS"
+	echo "	./03 [-flags] [todo]"
+	echo
+	echo "DESCRIPTION"
+	echo "	This scripts is a todo list manager. You can add a new item, retrieve existing items or delete one/multiple items from the list. The todo is a string that must be between double quotes."
+	echo
+	echo "	The options are as follows:"
+	echo
+	echo "	-a		Add a new item to the list. The new item will be at bottom of the list with an unchecked status."
+	echo
+	echo "	-d		Delete items from the list."
+	echo 
+	echo "	-f		Set a task as finished by updating the status to checked."
+	echo
+	echo "	-l		List all existing items in the list."
+	echo
+	echo "EXIT STATUS"
+	echo "	The 03 utility exits 0 on success, and 1 if an error occurs."
+	echo
+	echo "EXAMPLES"
+	echo "	The command:"
+	echo
+	echo "		./03 -a \"Update my packages\""
+	echo
+	echo "	will add the item \"Update my packages\" in the list of todo things with an unchecked status." 
+	echo
+	echo "	The command:"
+	echo
+	echo "		./03 -d *"
+	echo
+	echo "	will delete all items from the list. You will then have an empty list." 
+	exit 1
+fi
+
+if [ $# -eq 1 ]; then
+	if [ "$1" == "-l" ]; then
+		touch ./todo.txt
+		echo "Todo list :"
+		cat todo.txt
+		exit 0
+	fi
+	echo "Missing or wrong argument. Run script without arguments for more informations on usage."
+	exit 1
+fi
+
+if [ $# -eq 2 ]; then
+	if [ "$1" == "-a" ]; then
+		echo "[ ✗ ] $2" >> ./todo.txt
+		echo "\"$2\" : added to list."
+		exit 0
+	fi
+	if [ "$1" == "-d" ]; then
+		grep -v "$2" ./todo.txt > ./tmp
+		mv ./tmp ./todo.txt
+		echo "\"$2\" : removed from list."
+		exit 0
+	fi
+	if [ "$1" == "-f" ]; then
+		cat todo.txt | tr "[ ✗ ] $2" "[ ✓ ] $2" > ./tmp
+		mv ./tmp ./todo.txt
+		echo "$2 : done."
+		exit 0
+	else
+		echo "Wrong flag or argument."
+		exit 1
+	fi
+fi

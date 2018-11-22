@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ "$#" -eq 0 ]; then
+	echo "No argument supplied"
+	echo "usage: ./o2 <username>"
+	exit 1
+fi
+
+if [ "$(id -u)" != "0" ]; then
+	echo "This script can only be runned as root"
+	exit 1
+fi
+
+if [ "$(id -u $1)" == "0" ]; then
+	echo "You can't delete root you idiot"
+	exit 1
+fi
+
+if [ "$(id -u $1)" ]; then
+	pkill -u $1
+	userdel $1
+	echo "Sucessfully deleted user $1. Congrats."
+fi
